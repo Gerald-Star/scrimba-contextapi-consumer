@@ -1,3 +1,54 @@
+
+The difference between React Context in function component and class component
+
+
+React Context in Class component  makes use of 
+1. static contextType = ThemeConetx to render the conext property.
+2. ThemeContext.Provider and sets the value={}
+
+Sets function as a method while it returns the theme. 
+
+
+REACT CONTEXT PRACTICE 2 - CLASS
+
+import React, {Component} from "react"
+import ThemeContext from "./themeContext"
+
+class Header extends Component {
+    static contextType = ThemeContext
+    render() {
+        const theme = this.context
+        return (
+            <header className={`${theme}-theme`}>
+                <h2>{theme === "light" ? "Light" : "Dark"} Theme</h2>
+            </header>
+        )    
+    }
+}
+
+export default Header
+
+
+import React, {Component} from "react"
+import ThemeContext from "./themeContext"
+
+class Button extends Component {
+    render() {
+        const theme = this.context
+        return (
+            <button className={`${theme}-theme`}>Switch Theme</button>
+        )    
+    }
+}
+
+Button.contextType = ThemeContext
+
+export default Button
+
+
+But the function component uses the ThemeContext.Consumer method and sets  sets value objecz , value= {}
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
